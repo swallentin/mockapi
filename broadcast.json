@@ -1,0 +1,55 @@
+{
+	"id": "omg",
+	"originalTitle": "Here comes a title",
+	"channelId": "abcd",
+	"startTime": 1381330478554,
+	"endTime": 1381337678554,
+	"relatedMediaUnitType": "",
+	"relatedMetidUnitId": "abcd",
+	"enrichment": [{
+		"identifier": "some-identifier",
+		"updated": 1381337678554,
+		"title": "Here comes a title",
+		"description": "lorem",
+		"runtime": 1381337678554,
+		"imdbRating": 5,
+		"rottenTomatoesRating": 50,
+		
+		"googleNewsKeywords": ["Haxx", "canihaz"],
+				
+		"twitter": ["myName", "isJohn", "Doe"],
+		
+		"facebookGroupIds": ["Testing", "Lorem"],
+		
+		"links": [{
+			"title": "omgomgom",
+			"url": "http://spel.feber.se"
+		}],
+
+		"images": [{
+			"imageType": "poster",
+			"originalUrl": "http://",
+			"thumbnailUrl": "http://",
+			"largeUrl": "https//"
+		}],
+
+
+		"roles": [{
+			"personId": 12,
+			"roleType": "Skådespelare",
+			"name": "Brad Pitt"
+		}, {
+			"personId": 15,
+			"roleType": "Skådespelare",
+			"name": "Hulk Hogan"
+		}, {
+			"personId": 1337,
+			"roleType": "Skådespelare",
+			"name": "Dolph Lundgren"
+		}, {
+			"personId": 198,
+			"roleType": "Regissör",
+			"name": "Martin Scorsese"
+		}]	
+	}]
+}

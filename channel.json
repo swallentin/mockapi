@@ -1,0 +1,15 @@
+{
+	"id": "abcd",
+	"name": "TV3",
+	"country": "se",
+	"serviceTag": "mtg-epg",
+	"sortOrder": 1,
+	"darkLogoUrl": "",
+	"lightLogoUrl": "",
+	"defaultImages": [{
+		"imageType": "backdrop",
+		"originalUrl": "",
+		"thumbnailUrl": "",
+		"largeUrl": ""
+	}]
+}
