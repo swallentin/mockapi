@@ -73,14 +73,14 @@ function get_channel(req, res, next) {
 	return next();
 }
 
-function post_broadcast(req, res, next) {
-	res.send(broadcastJSON);
+function put(req, res, next) {
+	res.send(req.params);
 	return next();
 }
 
 
 function log(req, res, next) {
-	console.log(res.statusCode, req.route.method, req.route.path, req.params);
+	console.log(res.statusCode, req.route.method, req.url, req.params);
 	console.log("User is:", isAuthenticated);
 	return next();
 }
@@ -100,7 +100,13 @@ server.get('/authentication/logout', setHeaders, logout, log);
 server.get('/schedule/se', setHeaders, schedule, log);
 
 server.get('/broadcast/se/:broadcastId', setHeaders, get_broadcast, log);
-server.post('/broadcast/se/:broadcastId', setHeaders, post_broadcast, log);
+server.put('/broadcast/se/:broadcastId', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/googleNewsKeywords', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/facebookGroups', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/images', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
 
 server.get('/channel/se/:channelId', setHeaders, get_channel, log);
 
