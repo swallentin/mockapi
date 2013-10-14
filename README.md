@@ -29,18 +29,20 @@ Add a config.local.json and add this content to it,
 ```
 Add the following hosts to your /etc/hosts file
 
+``` sh
 127.0.0.1		local.like.tv
 127.0.0.1       admin.local.like.tv
 127.0.0.1		api.local.like.tv
 127.0.0.1		adminapi.local.like.tv
 127.0.0.1    	admin.local.like.tv
+```
 
 # Routes
 
-GET - /authentication/me - Returns 'authentication.json' User Context Object, will only output if login state is set to logged in.
-GET - /authentication/login - Changes login state to logged in.
-GET - /authentication/logout  - Change login state to logged out.
-GET - /schedule/se - Returns 'schedule.json' 
-GET - /broadcast/se/:broadcastId -  Returns 'broadcast.json'
-POST - /broadcast/se/:broadcastId
-GET - /channel/se/:channelId - Returns 'channel.json'
+* GET - __/authentication/me__ - Returns 'authentication.json' User Context Object, will only output if login state is set to logged in.
+* GET - __/authentication/login__ - Changes login state to logged in.
+* GET - __/authentication/logout__  - Change login state to logged out.
+* GET - __/schedule/se__ - Returns 'schedule.json' 
+* GET - __/broadcast/se/:broadcastId__ -  Returns 'broadcast.json'
+* POST - __/broadcast/se/:broadcastId__
+* GET - __/channel/se/:channelId__ - Returns 'channel.json'
