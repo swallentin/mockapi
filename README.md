@@ -37,6 +37,16 @@ Add the following hosts to your /etc/hosts file
 127.0.0.1    	admin.local.like.tv
 ```
 
+Issue this command,
+``` sh
+$ dscacheutil -flushcache
+```
+
+Start the admin cms by issuing this command
+``` sh
+$ grunt watch
+```
+
 # Routes
 
 * GET - __/authentication/me__ - Returns 'authentication.json' User Context Object, will only output if login state is set to logged in.
