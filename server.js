@@ -95,6 +95,25 @@ server.use(restify.bodyParser());
 
 // setup routes
 
+server.opts('.*', function (req, res, next) {
+
+	if( req.headers.origin && req.headers['access-control-request-method']) {
+		res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+		res.setHeader('Access-Control-Allow-Credentials', 'true');
+	    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Cookie, Set-Cookie, Accept, Access-Control-Allow-Credentials, Origin, Content-Type, Request-Id , X-Api-Version, X-Request-Id, Authorization');
+	    res.setHeader('Access-Control-Expose-Headers', 'Set-Cookie');
+	    res.setHeader('Allow', req.headers['access-control-request-method']);
+	    res.setHeader('Access-Control-Allow-Methods', req.headers['access-control-request-method']);
+		res.send(204);
+		next();
+
+	} else {
+		res.send(404);
+		next();
+	}
+
+});
+
 server.get('/authentication/me', setHeaders, me, log);
 server.get('/authentication/login', setHeaders, login, log);
 server.get('/authentication/logout', setHeaders, logout, log);
