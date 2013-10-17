@@ -98,7 +98,7 @@ server.use(restify.bodyParser());
 server.get('/authentication/me', setHeaders, me, log);
 server.get('/authentication/login', setHeaders, login, log);
 server.get('/authentication/logout', setHeaders, logout, log);
-server.get('/schedule', setHeaders, schedule, log);
+server.get('/schedule/se', setHeaders, schedule, log);
 
 server.get('/broadcast/:broadcastId', setHeaders, get_broadcast, log);
 server.post('/broadcast/:broadcastId', setHeaders, put, log);
@@ -110,7 +110,7 @@ server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/images', setHeaders
 server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
 server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
 
-server.get('/channel/:channelId', setHeaders, get_channel, log);
+server.get('/channel/se/:channelId', setHeaders, get_channel, log);
 
 
 
