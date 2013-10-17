@@ -9,7 +9,8 @@ var isAuthenticated = false;
 
 function setHeaders(req, res, next) {
 	res.setHeader('Content-Type', 'application/json');
-	res.setHeader('Access-Control-Allow-Origin', '*');
+	res.setHeader('Access-Control-Allow-Credentials', 'true');
+	res.setHeader('Access-Control-Allow-Origin', 'http://admin.local.like.tv:9000');
     res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -80,7 +81,7 @@ function put(req, res, next) {
 
 
 function log(req, res, next) {
-	console.log(res.statusCode, req.route.method, req.url, req.params);
+	console.log(res.statusCode, req.route.method, req.url, req.params, req.headers);
 	console.log("User is:", isAuthenticated);
 	return next();
 }
@@ -100,10 +101,11 @@ server.get('/authentication/logout', setHeaders, logout, log);
 server.get('/schedule/se', setHeaders, schedule, log);
 
 server.get('/broadcast/se/:broadcastId', setHeaders, get_broadcast, log);
-server.put('/broadcast/se/:broadcastId', setHeaders, put, log);
+server.post('/broadcast/se/:broadcastId', setHeaders, put, log);
+server.post('/broadcast/se/:broadcastId/mediatype', setHeaders, put, log);
 server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId', setHeaders, put, log);
-server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/googleNewsKeywords', setHeaders, put, log);
-server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/facebookGroups', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/googlenewskeywords', setHeaders, put, log);
+server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/facebookgroups', setHeaders, put, log);
 server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/images', setHeaders, put, log);
 server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
 server.put('/broadcast/se/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
