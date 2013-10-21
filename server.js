@@ -85,6 +85,11 @@ function put(req, res, next) {
 	return next();
 }
 
+function del(req, res, next) {
+	res.send(204);
+	return next();
+}
+
 
 function log(req, res, next) {
 	console.log(res.statusCode, req.route.method, req.url, req.params, req.headers);
@@ -97,7 +102,7 @@ function log(req, res, next) {
 var server = restify.createServer();
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
-
+server.pre(restify.pre.sanitizePath());
 
 // setup routes
 
@@ -124,20 +129,32 @@ server.get('/authentication/me', setHeaders, me, log);
 server.get('/authentication/login', setHeaders, login, log);
 server.get('/authentication/logout', setHeaders, logout, log);
 server.get('/schedule/se', setHeaders, schedule, log);
+server.get('/channel/se/:channelId', setHeaders, get_channel, log);
 
 server.get('/broadcast/:broadcastId', setHeaders, get_broadcast, log);
-server.get('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, get_enrichment, log);
 server.post('/broadcast/:broadcastId', setHeaders, put, log);
 server.post('/broadcast/:broadcastId/mediatype', setHeaders, put, log);
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, put, log);
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/googlenewskeywords', setHeaders, put, log);
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/facebookgroups', setHeaders, put, log);
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
 
-server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/images', setHeaders, put, log);
+server.get('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, get_enrichment, log);
 
-server.get('/channel/se/:channelId', setHeaders, get_channel, log);
+server.del('/enrichment/:enrichmentId', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId', setHeaders, put, log);
+
+server.del('/enrichment/:enrichmentId/googlenewskeywords', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId/googlenewskeywords', setHeaders, put, log);
+
+server.del('/enrichment/:enrichmentId/facebookgroups', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId/facebookgroups', setHeaders, put, log);
+
+server.del('/enrichment/:enrichmentId/links', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId/links', setHeaders, put, log);
+
+server.del('/enrichment/:enrichmentId/roles', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId/roles', setHeaders, put, log);
+
+server.del('/enrichment/:enrichmentId/images', setHeaders, del, log);
+server.post('/enrichment/:enrichmentId/images', setHeaders, put, log);
+
 
 
 
