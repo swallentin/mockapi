@@ -2,7 +2,8 @@ var restify = require('restify'),
 	authenticationContext = require('./authentication'),
 	broadcastJSON = require('./broadcast'),
 	scheduleJSON = require('./schedule'),
-	channelJSON = require('./channel');
+	channelJSON = require('./channel'),
+	enrichmentJSON = require('./enrichment');
 
 
 var isAuthenticated = false;
@@ -68,6 +69,11 @@ function get_broadcast(req, res, next) {
 	return next();
 }
 
+function get_enrichment(req, res, next) {
+	res.send(enrichmentJSON);
+	return next();
+}
+
 function get_channel(req, res, next) {
 	channelJSON.id = req.params.channelId;
 	res.send(channelJSON);
@@ -120,14 +126,16 @@ server.get('/authentication/logout', setHeaders, logout, log);
 server.get('/schedule/se', setHeaders, schedule, log);
 
 server.get('/broadcast/:broadcastId', setHeaders, get_broadcast, log);
+server.get('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, get_enrichment, log);
 server.post('/broadcast/:broadcastId', setHeaders, put, log);
 server.post('/broadcast/:broadcastId/mediatype', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/googlenewskeywords', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/facebookgroups', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/images', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
-server.put('/broadcast/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId', setHeaders, put, log);
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/googlenewskeywords', setHeaders, put, log);
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/facebookgroups', setHeaders, put, log);
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/links', setHeaders, put, log);
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/roles', setHeaders, put, log);
+
+server.post('/broadcast/:broadcastId/enrichment/:enrichmentId/images', setHeaders, put, log);
 
 server.get('/channel/se/:channelId', setHeaders, get_channel, log);
 

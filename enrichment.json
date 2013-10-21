@@ -1,0 +1,59 @@
+{
+		"identifier": "some-identifier",
+		"updated": 1381337678554,
+		"title": "Here comes a title",
+		"description": "lorem",
+		"runtime": 1381337678554,
+		"imdbRating": 5,
+		"rottenTomatoesRating": 50,
+		
+		"googleNewsKeywords": [{
+			"keyword": "Haxx"
+		}, {
+			"keyword": "canihaz"
+		}],
+				
+		"twitterTags": [{
+	      "tag": "#bradpittrules"
+	    }],
+		
+		"facebookGroups": [{
+			"title": "lorem",
+			"id": "hellow"
+		}],
+		
+		"links": [{
+			"name": "omgomgom",
+			"url": "http://spel.feber.se"
+		}],
+
+		"images": [{
+			"imageType": "poster",
+			"originalUrl": "http://",
+			"thumbnailUrl": "http://",
+			"largeUrl": "https//"
+		}],
+
+
+		"roles": [{
+			"personId": 12,
+			"roleType": "Skådespelare",
+			"name": "Joe Black",
+			"personName": "Brad Pitt"
+		}, {
+			"personId": 15,
+			"roleType": "Skådespelare",
+			"name": "Wrestler",
+			"personName": "Hulk Hogan"
+		}, {
+			"personId": 1337,
+			"roleType": "Skådespelare",
+			"name": "Drago",
+			"personName": "Dolph Lundgren"
+		}, {
+			"personId": 198,
+			"roleType": "Regissör",
+			"name": "",
+			"personName": "Martin Scorsese"
+		}]	
+	}
