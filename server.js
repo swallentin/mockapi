@@ -2,6 +2,7 @@ var restify = require('restify'),
 	authenticationContext = require('./authentication'),
 	broadcastJSON = require('./broadcast'),
 	scheduleJSON = require('./schedule'),
+	channelsJSON = require('./channels'),
 	channelJSON = require('./channel'),
 	enrichmentJSON = require('./enrichment');
 
@@ -80,6 +81,11 @@ function get_channel(req, res, next) {
 	return next();
 }
 
+function get_channels(req, res, next) {
+	res.send(channelsJSON);
+	return next();
+}
+
 function put(req, res, next) {
 	res.send(req.params);
 	return next();
@@ -155,6 +161,9 @@ server.post('/enrichment/:enrichmentId/roles', setHeaders, put, log);
 server.del('/enrichment/:enrichmentId/images', setHeaders, del, log);
 server.post('/enrichment/:enrichmentId/images', setHeaders, put, log);
 
+server.post('/imagepersistor', setHeaders, put, log);
+
+server.get('/channels', setHeaders, get_channels, log);
 
 
 
