@@ -86,6 +86,11 @@ function get_channels(req, res, next) {
 	return next();
 }
 
+function get(req, res, next) {
+	res.send({ message: "OK"});
+	return next();
+}
+
 function put(req, res, next) {
 	res.send(req.params);
 	return next();
@@ -137,6 +142,8 @@ server.get('/authentication/logout', setHeaders, logout, log);
 server.get('/schedule/se', setHeaders, schedule, log);
 server.get('/channel/se/:channelId', setHeaders, get_channel, log);
 
+server.get('/jobs/:identifier/start', setHeaders, get, log);
+
 server.get('/broadcast/:broadcastId', setHeaders, get_broadcast, log);
 server.post('/broadcast/:broadcastId', setHeaders, put, log);
 server.post('/broadcast/:broadcastId/mediatype', setHeaders, put, log);
@@ -169,6 +176,6 @@ server.get('/channels', setHeaders, get_channels, log);
 
 // start server
 
-server.listen(5000, function() {
+server.listen(5001, function() {
 	console.log('%s listening at %s', server.name, server.url);
 })
