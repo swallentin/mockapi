@@ -172,6 +172,8 @@ server.post('/imagepersistor', setHeaders, put, log);
 
 server.get('/channels', setHeaders, get_channels, log);
 
+server.post('/post', setHeaders, put, log);
+
 
 
 // start server
