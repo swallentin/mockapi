@@ -13,4 +13,4 @@ $ open http://localhost:5001
 
 # How to use
 
-* GET - __/sample/me__ - Returns 'sample.json'
+* GET - __/sample__ - Returns 'sample.json'
